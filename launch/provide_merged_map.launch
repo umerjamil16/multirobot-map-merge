@@ -1,0 +1,5 @@
+<launch>
+    <arg name="map_file" default="$(find ca_mapping)/maps/map_17.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+</launch>
+

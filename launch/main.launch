@@ -1,0 +1,28 @@
+<launch>
+
+  <node pkg="stage_ros" 
+	type="stageros" 
+	name="stageros" 
+	args="$(find ca_mapping)/world/island.world" 
+	output="screen"/>
+
+  <node pkg="tf"
+        type="static_transform_publisher"
+        name="robot_0_map_tf_broadcaster"
+        args="0 0 0 0 0 0 /map /robot_0/odom 1000" output="screen"/>
+  <node pkg="tf" 
+        type="static_transform_publisher" 
+        name="robot_1_map_tf_broadcaster"
+        args="-3.1 0 0 0 0 0 /map /robot_1/odom 1000" output="screen"/>
+
+ <node type="rviz" name="rviz" pkg="rviz" args="-d $(find ca_mapping)/rviz/rviz.rviz" output="screen"/>
+
+  <!-- launch rqt_tf_tree node 
+  <node pkg="rqt_tf_tree" 
+        type="rqt_tf_tree" 
+        name="rqt_tf_tree_output"
+	output="screen"/>
+-->
+
+</launch>
+
